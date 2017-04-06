@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   has_many :cart_ids
-  has_many :products, through :cart_ids
+  has_many :products, through: :cart_ids
   validates :name, presence: true
   validates :email, presence: true
   validates :address, presence: true
