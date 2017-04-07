@@ -6,8 +6,8 @@ class ProductsController < Sinatra::Base
   enable :sessions unless test?
   set :session_secret, "secret"
 
-  get '/products/:id'do
-    @product = Product.find(params[:id])
+  get '/products/:slug'do
+    @product = Product.find_by(slug: params[:slug])
     erb :'products/show'
   end
 end
