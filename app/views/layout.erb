@@ -17,7 +17,7 @@
         <h1>Welcome to ROCKET FUEL!</h1>
         <h2>Get your coffee here</h2>
         <%if Helpers.is_logged_in?(session) %>
-          <a href="/account"><%=Helpers.current_user(session).name%></a>
+          <a href="/users/<%=Helpers.current_user(session).slug%>"><%=Helpers.current_user(session).name%></a>
           <a href="/carts/<%=session[:cart_id]%>">Cart</a>
           <a href="/logout">Logout</a>
         <%else%>

@@ -8,6 +8,10 @@ class CartController < Sinatra::Base
   set :session_secret, "secret"
   use Rack::Flash
 
+  get '/carts/' do
+    erb :'carts/empty'
+  end
+
   get '/carts/:id' do
     @cart = Cart.find(params[:id])
     @user = User.find(@cart.user_id)
