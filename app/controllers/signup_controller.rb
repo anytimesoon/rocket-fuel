@@ -10,4 +10,8 @@ class ApplicationController < Sinatra::Base
     erb :'signup/index'
   end
 
+  post '/signup' do
+    binding.pry
+  end
+
 end
