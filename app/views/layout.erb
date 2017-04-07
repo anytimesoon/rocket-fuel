@@ -18,7 +18,7 @@
         <h2>Get your coffee here</h2>
         <%if Helpers.is_logged_in?(session) %>
           <a href="/account"><%=Helpers.current_user(session).name%></a>
-          <a href="/cart">Cart</a>
+          <a href="/carts/<%=session[:cart_id]%>">Cart</a>
           <a href="/logout">Logout</a>
         <%else%>
           <a href="/login">Log in</a>
