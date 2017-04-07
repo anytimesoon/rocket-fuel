@@ -29,7 +29,7 @@ class ProductsController < Sinatra::Base
 
     cart.cartlines << cartline
     if cart.save
-      redirect '/cart'
+      redirect "/carts/#{cart.id}"
     else
       flash[:message] = "Something didn't quite work. Please try again"
       redirect "/products/#{product.slug}"
