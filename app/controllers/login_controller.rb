@@ -28,4 +28,9 @@ class LoginController < Sinatra::Base
       erb :'/login'
     end
   end
+
+  get '/logout' do
+    session.clear
+    redirect '/'
+  end
 end
