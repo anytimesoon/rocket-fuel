@@ -1,7 +1,7 @@
 require './config/environment'
 require 'rack-flash'
 
-class ApplicationController < Sinatra::Base
+class SignupController < Sinatra::Base
   set :public_folder, './public'
   set :views, 'app/views'
   enable :sessions unless test?
@@ -16,7 +16,7 @@ class ApplicationController < Sinatra::Base
     if !Helpers.is_email?(params[:email])
       flash[:message] = "Must be valid email address"
       @params = params
-      redirect :'signup/index'
+      redirect :'signup/'
     end
 
     user = User.new(params)
@@ -26,7 +26,7 @@ class ApplicationController < Sinatra::Base
     else
       flash[:message] = "Something went wrong. Please try again."
       @params = params
-      erb :'signup/index'
+      erb :'signup/'
     end
   end
 
