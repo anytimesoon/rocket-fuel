@@ -21,4 +21,10 @@ end
 
 User.all.each do |user|
   user.slug = user.name.gsub(' ', '-').downcase
+  user.save
+end
+
+Product.all.each do |product|
+  product.slug = product.name.gsub(' ', '-').downcase
+  product.save
 end

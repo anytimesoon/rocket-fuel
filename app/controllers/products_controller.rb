@@ -13,18 +13,18 @@ class ProductsController < Sinatra::Base
     erb :'products/show'
   end
 
-  patch '/products/:slug' do
-    user = current_user
+  post '/products/:slug' do
     product = Product.find_by(slug: params[:slug])
 
     if !Helpers.is_logged_in?(session)
       redirect '/login'
     elsif !session[:cart_id]
+      user = Helpers.current_user(session)
       cart = Cart.create(product_id: product.id, user_id: user.id)
       session[:cart_id] = cart.id
     end
 
-    cart = Cart.find_by(session[:cart_id])
+    cart = Cart.find(session[:cart_id])
     cartline = Cartline.new(cart_id: cart.id, product_id: product.id, product_amount: params[:product_amount])
 
     cart.cartlines << cartline
