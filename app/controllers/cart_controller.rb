@@ -18,4 +18,11 @@ class CartController < Sinatra::Base
       redirect '/error'
     end
   end
+
+  post 'carts/:id' do
+    @cart = Cart.find(params[:id])
+    @cart.total = session[:total]
+    @user = User.find(@cart.user_id)
+    erb :'carts/sold'
+  end
 end

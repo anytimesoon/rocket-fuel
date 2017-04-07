@@ -20,3 +20,8 @@
 
 <h2>Total</h2>
 <p><%=total%></p>
+
+<form action="/carts/<%=@cart.id%>" method="post">
+  <input type="hidden" name="total" value="<%=total%>">
+  <input type="submit">
+</form>
