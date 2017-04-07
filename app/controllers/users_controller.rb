@@ -12,5 +12,18 @@ class UsersController < Sinatra::Base
     @user = User.find_by(slug: params[:slug])
     erb :'/users/show'
   end
+  
+  post '/users/:slug' do
+    @user = User.find_by(slug: params[:slug])
+    binding.pry
+    @user.update(params)
+    erb :'/users/show'
+  end
+    
+  get '/users/:slug/edit' do
+    @user = User.find_by(slug: params[:slug])
+    erb :'/users/edit'
+  end
+
 
 end
