@@ -1,1 +1,23 @@
-Hello
+<div class="grid">
+  <div class="col-8">
+    <img src="public/img/<%=@product.slug%>-wide" alt="<%=@product.name%>">
+  </div>
+  <div class="col-4">
+    <h1><%= @product.name %></h1>
+    <p>$<%= @product.price %> per pound</p>
+    <form action="/products" method="post">
+      <select name="product_amount">
+        <% x = 0
+        10.times do%>
+          <option value='<%= x += 1%>'> <%= x %></option>
+        <%end%>
+      </select>
+      <label for="product_amount">Pounds</label>
+      <input type="submit">
+    </form>
+  </div>
+</div>
+
+<div class="grid">
+  <div class="col-12"><%=@product.description%></div>
+</div>
