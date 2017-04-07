@@ -11,6 +11,11 @@ class CartController < Sinatra::Base
   get '/carts/:id' do
     @cart = Cart.find(params[:id])
     @user = User.find(@cart.user_id)
-    erb :'carts/show'
+
+    if @user == Helpers.current_user(session)
+      erb :'carts/show'
+    else
+      redirect '/error'
+    end
   end
 end
