@@ -22,6 +22,7 @@ class SignupController < Sinatra::Base
     user = User.new(params)
     if user.save
       session[:user_id] = user.id
+      user.slugify
       redirect '/'
     else
       flash[:message] = "Something went wrong. Please try again."
