@@ -9,6 +9,6 @@ class ApplicationController < Sinatra::Base
   use Rack::Flash
 
   get '/login' do
-    erb '/'
+    erb :'/login/index'
   end
 end
