@@ -18,3 +18,7 @@ end
 productlist.each do |name, price, description|
   Product.create(name: name, price: price, description: description)
 end
+
+User.all.each do |user|
+  user.slug = user.name.gsub(' ', '-').downcase
+end
