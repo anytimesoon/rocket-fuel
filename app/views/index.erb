@@ -6,7 +6,7 @@
 <div class="grid">
 <% Product.all.each do |product| %>
   <div class="col-4">
-    <img src="#" alt="<%=product.name%>">
+    <img src="public/img/<%=product.slug%>-square" alt="<%=product.name%>">
     <header><%=prodcut.name%></header>
     <p>$<%=prodcut.price%></p>
     <a href="/products/<%=product.slug%>"
