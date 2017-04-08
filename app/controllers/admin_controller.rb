@@ -44,4 +44,13 @@ class AdminController < Sinatra::Base
       "You're not an admin"
     end
   end
+
+  get '/admin/:id/product' do
+    @admin = Admin.find(params[:id])
+    if @admin == Helpers.current_admin(session)
+      erb :'admin/product'
+    else
+      "You're not an admin"
+    end
+  end
 end
