@@ -15,8 +15,7 @@ class SignupController < Sinatra::Base
   post '/signup' do
     if !Helpers.is_email?(params[:email])
       flash[:message] = "Must be valid email address"
-      @params = params
-      redirect :'signup/'
+      redirect :'/signup'
     end
 
     user = User.new(params)
@@ -27,7 +26,7 @@ class SignupController < Sinatra::Base
     else
       flash[:message] = "Something went wrong. Please try again."
       @params = params
-      erb :'signup/'
+      erb :'/signup/index'
     end
   end
 
