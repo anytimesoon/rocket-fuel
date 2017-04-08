@@ -15,9 +15,11 @@ class LoginController < Sinatra::Base
   post '/login' do
     if !Helpers.is_email?(params[:email])
       flash[:message] = "Must be valid email address"
-      redirect :'/login'
+      @params = params
+      binding.pry
+      erb :'/login/index'
     end
-
+    binding.pry
     user = User.find_by(email: params[:email])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
@@ -25,7 +27,7 @@ class LoginController < Sinatra::Base
     else
       flash[:message] = "Something went wrong. Please try again."
       @params = params
-      erb :'/login'
+      erb :'/login/index'
     end
   end
 
