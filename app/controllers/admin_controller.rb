@@ -42,20 +42,25 @@ class AdminController < Sinatra::Base
     end
   end
 
-  get '/admin/:id/product' do
-    @admin = Admin.find(params[:id])
-    if @admin == Helpers.current_admin(session)
-      erb :'admin/product'
-    else
-      "You're not an admin"
-    end
+  get '/admin/:id/products' do
+
   end
 
-  post '/admin/:id/product' do
+  post '/admin/:id/products' do
     admin = Admin.find(params[:id])
     binding.pry
     product = Product.new(name: params[:name], price: params[:price], description: params[:description])
     product.slugifier
     redirect "/products/#{product.id}"
+  end
+
+
+  get '/admin/:id/products/new' do
+    @admin = Admin.find(params[:id])
+    if @admin == Helpers.current_admin(session)
+      erb :'admin/productnew'
+    else
+      "You're not an admin"
+    end
   end
 end
