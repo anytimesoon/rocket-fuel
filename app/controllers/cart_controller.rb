@@ -29,4 +29,12 @@ class CartController < Sinatra::Base
     @user = User.find(@cart.user_id)
     erb :'carts/sold'
   end
+
+  get '/carts/:id/:cartlineid/delete' do
+    cart = Cart.find(params[:id])
+    cartline = Cartline.find(params[:cartlineid])
+    cartline.destroy
+    redirect "/carts/#{cart.id}"
+
+  end
 end
