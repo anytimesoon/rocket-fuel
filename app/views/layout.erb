@@ -23,7 +23,7 @@
           <a href="/carts/<%=session[:cart_id]%>">Cart</a>
           <a href="/logout">Logout</a>
         <%elsif Helpers.is_admin?(session) %>
-          <a href="/admin/users">Users</a>
+          <a href="/admin/<%= Helpers.current_admin(session).id %>/users">Users</a>
           <a href="/admin/products/new">New Product</a>
           <a href="/logout">Logout</a>
         <%else%>
