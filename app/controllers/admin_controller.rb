@@ -14,13 +14,10 @@ class AdminController < Sinatra::Base
 
   post '/admin' do
     @admin = Admin.find_by(name: params[:name])
-    binding.pry
     if @admin && @admin.authenticate(params[:password])
-      binding.pry
       session[:admin_id] = @admin.id
       redirect "/admin/#{@admin.id}"
     else
-      binding.pry
       flash[:message] = "Something went wrong. Please try again."
       @params = params
       erb :'/admin/login'
@@ -52,5 +49,13 @@ class AdminController < Sinatra::Base
     else
       "You're not an admin"
     end
+  end
+
+  post '/admin/:id/product' do
+    admin = Admin.find(params[:id])
+    binding.pry
+    product = Product.new(name: params[:name], price: params[:price], description: params[:description])
+    product.slugifier
+    redirect "/products/#{product.id}"
   end
 end
