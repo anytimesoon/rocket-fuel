@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20170408183956) do
 
-  create_table "admin", force: :cascade do |t|
+  create_table "admins", force: :cascade do |t|
     t.string "name"
     t.string "password_digest"
   end
