@@ -13,21 +13,14 @@ class AdminController < Sinatra::Base
   end
 
   post '/admin' do
-    if !Helpers.is_email?(params[:email])
-      flash[:message] = "Must be valid email address"
-      @params = params
-      binding.pry
-      erb :'/admin/show'
-    end
-    binding.pry
-    user = User.find_by(email: params[:email])
+    admin = Admin.find_by(name: params[:name])
     if user && user.authenticate(params[:password])
-      session[:user_id] = user.id
-      redirect '/'
+      session[:admin_id] = admin.id
+      redirect "/admin/#{admin.id}"
     else
       flash[:message] = "Something went wrong. Please try again."
       @params = params
-      erb :'/admin/show'
+      erb :'/admin/login'
     end
   end
 
