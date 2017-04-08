@@ -8,4 +8,8 @@ class AdminController < Sinatra::Base
   set :session_secret, "secret"
   use Rack::Flash
 
+  get '/admin' do
+    erb :'admin/login'
+  end
+
 end
