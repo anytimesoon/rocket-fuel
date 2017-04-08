@@ -1,10 +1,13 @@
-<div class="grid">
-<% Product.all.each do |product| %>
-  <div class="col-4">
-    <a href="/products/<%=product.slug%>"><img src="/img/<%=product.slug%>-square.jpg" alt="<%=product.name%>"></a>
-    <a href="/products/<%=product.slug%>"><header><%=product.name%></header></a>
-    <p>$<%=product.price%></p>
-    <a href="/products/<%=product.slug%>">Find out more</a>
+
+<% Product.all.each_slice(3) do |group| %>
+  <div class="grid">
+    <%group.each do |product|%>
+      <div class="col-4">
+        <a href="/products/<%=product.slug%>"><img src="/img/<%=product.slug%>-square.jpg" alt="<%=product.name%>"></a>
+        <a href="/products/<%=product.slug%>"><header><%=product.name%></header></a>
+        <p>$<%=product.price%></p>
+        <a href="/products/<%=product.slug%>">Find out more</a>
+      </div>
+    <%end%>
   </div>
 <%end%>
-</div>
