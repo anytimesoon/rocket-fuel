@@ -71,6 +71,7 @@ class AdminController < Sinatra::Base
 
   get '/admin/:id/products/:productid/edit' do
     @admin = Admin.find(params[:id])
+    @product = Product.find(params[:productid])
     if @admin == Helpers.current_admin(session)
       erb :'admin/productedit'
     else

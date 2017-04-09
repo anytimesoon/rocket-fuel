@@ -1,6 +1,6 @@
-<h1>Create a new product</h1>
+<h1>Edit <%=@product.name%></h1>
 
-<form action="/admin/<%=@admin.id%>/products" method="post">
+<form action="/admin/<%=@admin.id%>/products/<%=@product.id%>" method="post">
   <input type="hidden" name="_method" value="patch">
   <input type="text" name="name" placeholder="Name" required>
   <input type="text" name="price" placeholder="Price" required>
