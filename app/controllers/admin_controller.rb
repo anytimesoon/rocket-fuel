@@ -53,10 +53,23 @@ class AdminController < Sinatra::Base
 
   post '/admin/:id/products' do
     admin = Admin.find(params[:id])
-    binding.pry
+
     product = Product.new(name: params[:name], price: params[:price], description: params[:description])
     product.slugifier
-    redirect "/products/#{product.id}"
+
+    @squarename = product.slug + '-square.jpg'
+    squaretempfile = params[:squarepic][:tempfile]
+    File.open("./public/img/#{@squarename}", 'wb') do |f|
+      f.write(squaretempfile.read)
+    end
+
+    @widename = product.slug + '-wide.jpg'
+    widetempfile = params[:widepic][:tempfile]
+    File.open("./public/img/#{@widename}", 'wb') do |f|
+      f.write(widetempfile.read)
+    end
+
+    redirect "/products/#{product.slug}"
   end
 
 
@@ -76,7 +89,7 @@ class AdminController < Sinatra::Base
     @product.price = params[:price]
     @product.description = params[:description]
     @product.slugifier
-    redirect "/product/#{@product.id}"
+    redirect "/product/#{@product.slug}"
   end
 
   get '/admin/:id/products/:productid/edit' do
