@@ -3,8 +3,8 @@
 <ul>
   <%Product.all.each do |product|%>
     <li>    
-      <a href="/admin/<%=@admin.id%>/<%=product.id%>/edit">edit</a> | 
-      <a href="/admin/<%=@admin.id%>/<%=product.id%>/delete">delete</a> | 
+      <a href="/admin/<%=@admin.id%>/products/<%=product.id%>/edit">edit</a> | 
+      <a href="/admin/<%=@admin.id%>/products/<%=product.id%>/delete">delete</a> | 
       <%=product.name%>
     </li>
   <%end%>
