@@ -102,4 +102,15 @@ class AdminController < Sinatra::Base
     end
   end
 
+  get '/admin/:id/products/:productid/delete' do
+    @admin = Admin.find(params[:id])
+    @product = Product.find(params[:productid])
+    if @admin == Helpers.current_admin(session)
+      @product.destroy
+      redirect "/admin/#{@admin.id}/products"
+    else
+      "You're not an admin"
+    end
+  end
+
 end
