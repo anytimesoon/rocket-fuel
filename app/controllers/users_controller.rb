@@ -17,10 +17,11 @@ class UsersController < Sinatra::Base
     erb :'/users/show'
   end
 
-  post '/users/:slug' do
+  patch '/users/:slug' do
     @user = User.find_by(slug: params[:slug])
-    binding.pry
-    @user.update(params)
+    @user.name = params[:name]
+    @user.email = params[:email]
+    @user.address = params[:address]
     @user.slugifier
     erb :'/users/show'
   end
