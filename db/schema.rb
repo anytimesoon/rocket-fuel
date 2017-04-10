@@ -10,7 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170407195412) do
+ActiveRecord::Schema.define(version: 20170408183956) do
+
+  create_table "admins", force: :cascade do |t|
+    t.string "name"
+    t.string "password_digest"
+  end
 
   create_table "cartlines", force: :cascade do |t|
     t.integer "product_id"

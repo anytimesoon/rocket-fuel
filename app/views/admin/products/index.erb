@@ -1,0 +1,11 @@
+<h1>Products</h1>
+
+<ul>
+  <%Product.all.each do |product|%>
+    <li>    
+      <a href="/admin/<%=@admin.id%>/products/<%=product.id%>/edit">edit</a> | 
+      <a href="/admin/<%=@admin.id%>/products/<%=product.id%>/delete">delete</a> | 
+      <%=product.name%>
+    </li>
+  <%end%>
+</ul>

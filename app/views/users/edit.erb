@@ -1,6 +1,13 @@
+<% if flash.has?(:message) %>
+  <%= flash[:message] %>
+<% end %>
+
+
 <form action="/users/<%=@user.slug%>" method="post">
+  <input type="hidden" name='_method' value="PATCH">
   <input type="text" name="name" placeholder="Username" value="<%=@user.name%>">
   <input type="text" name="email" placeholder="Email" value="<%=@user.email%>">
   <input type="text" name="address" placeholder="Address" value="<%=@user.address%>">
+  <input type="password" name="password" placeholder="password" required>
   <input type="submit">
 </form>

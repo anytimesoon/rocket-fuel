@@ -1,0 +1,9 @@
+<h1>Edit <%=@product.name%></h1>
+
+<form action="/admin/<%=@admin.id%>/products/<%=@product.id%>" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <input type="text" name="name" placeholder="Name" value="<%=@product.name%>">
+  <input type="text" name="price" placeholder="Price" value="<%=@product.price%>"><br><br>
+  <textarea cols="50" rows="10" name="description" placeholder="Description"><%=@product.description%></textarea><br><br>
+  <input type="submit">
+</form>

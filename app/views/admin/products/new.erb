@@ -1,0 +1,10 @@
+<h1>Create a new product</h1>
+
+<form action="/admin/<%=@admin.id%>/products" method="post" enctype="multipart/form-data">
+  <input type="text" name="name" placeholder="Name" required>
+  <input type="text" name="price" placeholder="Price" required><br><br>
+  <label for="squarepic">Square image | </label><input type="file" name="squarepic" accept="image/*"><br><br>
+  <label for="widepic">Wide image | </label><input type="file" name="widepic" accept="image/*"><br><br>
+  <textarea cols="50" rows="10" name="description" placeholder="description" required></textarea><br><br>
+  <input type="submit">
+</form>

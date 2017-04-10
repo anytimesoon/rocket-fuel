@@ -1,4 +1,4 @@
 <h1>Thank you for your order, <%= @user.name%></h1>
-<h2>Your order came to $<%= @cart.total %></h2>
+<h2>Your order came to $<%= @cart.decimal_total %></h2>
 <h3>Deliver address</h3>
 <%= @user.address %>
