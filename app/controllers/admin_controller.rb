@@ -89,7 +89,7 @@ class AdminController < Sinatra::Base
     @product.price = params[:price]
     @product.description = params[:description]
     @product.slugifier
-    redirect "/product/#{@product.slug}"
+    redirect "/products/#{@product.slug}"
   end
 
   get '/admin/:id/products/:productid/edit' do
