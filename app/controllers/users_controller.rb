@@ -19,11 +19,22 @@ class UsersController < Sinatra::Base
 
   patch '/users/:slug' do
     @user = User.find_by(slug: params[:slug])
-    @user.name = params[:name]
-    @user.email = params[:email]
-    @user.address = params[:address]
-    @user.slugifier
-    erb :'/users/show'
+    if @user && @user.authenticate(params[:password])
+
+      @user.name = params[:name]
+      @user.email = params[:email]
+      @user.address = params[:address]
+      @user.password = params[:password]
+
+      @user.slugifier
+
+      erb :'/users/show'
+    else
+      flash[:message] = "Entered the wrong password"
+      redirect "/users/#{@user.slug}/edit"
+    end
+
+
   end
 
   get '/users/:slug/edit' do
