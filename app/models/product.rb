@@ -6,4 +6,8 @@ class Product < ActiveRecord::Base
   validates :price, presence: true
 
   include Slugify
+
+  def decimal_price
+    '%.2f' % price
+  end
 end
