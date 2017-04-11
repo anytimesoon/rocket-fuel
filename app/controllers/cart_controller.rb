@@ -16,7 +16,7 @@ class CartController < Sinatra::Base
     @cart = Cart.find(params[:id])
     @user = User.find(@cart.user_id)
 
-    if @user == Helpers.current_user(session)
+    if Helpers.is_logged_in?(session) && @user == Helpers.current_user(session)
       erb :'carts/show'
     else
       redirect '/error'

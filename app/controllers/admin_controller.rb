@@ -26,7 +26,7 @@ class AdminController < Sinatra::Base
 
   get '/admin/:id' do
     @admin = Admin.find(params[:id])
-    if @admin == Helpers.current_admin(session)
+    if Helpers.is_admin?(session) && @admin == Helpers.current_admin(session)
       erb :'admin/show'
     else
       "You're not an admin"
@@ -35,7 +35,7 @@ class AdminController < Sinatra::Base
 
   get '/admin/:id/users' do
     @admin = Admin.find(params[:id])
-    if @admin == Helpers.current_admin(session)
+    if Helpers.is_admin?(session) && @admin == Helpers.current_admin(session)
       erb :'admin/users'
     else
       "You're not an admin"
@@ -44,7 +44,7 @@ class AdminController < Sinatra::Base
 
   get '/admin/:id/products' do
     @admin = Admin.find(params[:id])
-    if @admin == Helpers.current_admin(session)
+    if Helpers.is_admin?(session) &&  @admin == Helpers.current_admin(session)
       erb :'admin/products/index'
     else
       "You're not an admin"
